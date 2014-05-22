@@ -2,9 +2,13 @@ class AdminUser < ActiveRecord::Base
 	# To configure a different table name:
 	# self.table_name = :admin_users
 
+	has_secure_password
+
 	has_and_belongs_to_many :pages
 	has_many :section_edits
 	has_many :sections, :through => :section_edits
+
+	scope :sorted, lambda { order("last_name ASC, first_name ASC") }
 
 	EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
 	validates_presence_of :first_name
@@ -18,4 +22,8 @@ class AdminUser < ActiveRecord::Base
 	validates_length_of :email, :maximum => 100
 	validates_format_of :email, :with => EMAIL_REGEX
 	validates_confirmation_of :email
+
+	def name
+		"#{first_name} #{last_name}"
+	end
 end

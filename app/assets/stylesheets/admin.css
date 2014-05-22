@@ -5,6 +5,8 @@
 #content { padding-left: 100px; padding-right: 100px; }
 #content h2 { width: 100%; text-align: center; }
 
+h1#main { text-align: center; }
+
 .login form { margin: 100px 250px; }
 .menu .identity { text-align: center; }
 .menu ul { margin: 3em 250px; list-style: none; }
@@ -20,7 +22,7 @@ a.action { float: right; padding: 2px 5px; margin: 0 0 1em 1em;
 a.action:hover { background: #B6D491; }
 
 /* small action buttons */
-.actions { width: 200px; }
+.actions { width: 230px; }
 .actions a.action { float: left; min-width: 3.5em;
   padding: 1px 2px; margin: 2px 5px; font-size: 0.7em; }
 
@@ -63,3 +65,5 @@ span.status.false { background: red; color: red; }
 #errorExplanation p { color: #333333; margin: 0; padding: 3px 0.5em; }
 #errorExplanation ul { margin-top: 0; }
 #errorExplanation ul li { list-style: square; }
+
+#navigation { height: 540px;}

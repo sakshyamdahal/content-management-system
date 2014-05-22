@@ -1,6 +1,12 @@
 class Section < ActiveRecord::Base
 	has_many :section_edits
 	has_many :editors, :through => :section_edits, :class_name => "AdminUser"
+	belongs_to :page
+
+	acts_as_list :scope => :page
+
+	after_save :touch_page
+
 
 	CONTENT_TYPES = ['text', 'HTML']
 
@@ -18,4 +24,9 @@ class Section < ActiveRecord::Base
 	scope :search, lambda {|query|
 		where(["name LIKE ?", "%#{query}%"])
 	}
+
+	private
+		def touch_page
+			page.touch
+		end
 end
